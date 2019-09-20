@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">DTC Pass</string>
+    <string name="feedback_suggestions"><![CDATA[Feedback & Suggestions]]></string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string-array name="select_pass_duration">
+        <item>One Month</item>
+        <item>Two Month</item>
+        <item>Quaterly</item>
+        <item>Half Yearly</item>
+        <item>Yearly</item>
+
+
+    </string-array>
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="lbl_set_profile_photo">Set profile image</string>
+    <string name="toast_image_intent_null">Image picker option is missing!</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+
+</resources>

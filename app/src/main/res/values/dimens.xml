@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="buy_bu_pass_padding_left">20dp</dimen>
+    <dimen name="buy_bu_pass_padding_bottom">16dp</dimen>
+    <dimen name="buy_bu_pass_padding_top">16dp</dimen>
+    <dimen name="bu_bus_pass_margin_right">15dp</dimen>
+    <dimen name="bu_bus_pass_margin_left">20dp</dimen>
+
+
+
+
+
+
+</resources>

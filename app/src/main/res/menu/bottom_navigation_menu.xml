@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--	<item
+		android:id="@+id/navigation_home"
+		android:icon="@drawable/ic_home"
+		android:title="" />-->
+
+	<item
+		android:id="@+id/home_page_asset"
+		android:icon="@drawable/home_page_asset"
+		android:title="Home" />
+
+	<item
+		android:id="@+id/navigation_digital_pass"
+		android:icon="@drawable/smartphone_asset"
+		android:title="Digital Pass" />
+
+
+	<item
+		android:id="@+id/navigation_notification"
+		android:icon="@drawable/notification_asset"
+		android:title="Notification" />
+
+	<item
+		android:id="@+id/navigation_profile"
+		android:icon="@drawable/person_asset"
+		android:title="Profile" />
+
+</menu>

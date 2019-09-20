@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText"
+    tools:context=".SplashActivity">
+
+    <ImageView
+        android:id="@+id/splash_icon"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="130dp"
+        android:background="@drawable/dtclogo"
+        android:layout_centerHorizontal="true"
+        android:layout_height="80dp"
+        android:contentDescription="app logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/splash_icon"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DTC"
+            android:textColor="#2e4799"
+            android:textStyle="bold"
+            android:fontFamily="@font/gotham_medium"
+            android:textSize="50sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="#2e4799"
+            android:fontFamily="@font/gotham_medium"
+            android:text="Bus Pass"/>
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/splash_background1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/splash_road1"
+        android:background="@drawable/splash_background"
+        android:contentDescription="splash background" />
+
+    <!-- for animation purpose -->
+    <ImageView
+        android:id="@+id/splash_background2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/splash_road1"
+        android:background="@drawable/splash_background"
+        android:contentDescription="splash background" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dtcbus"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginLeft="104dp"
+        android:layout_above="@+id/splash_road1"
+        android:contentDescription="bus" />
+
+    <ImageView
+        android:id="@+id/splash_road1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/road"
+        android:contentDescription="road" />
+
+    <!-- for animation purpose -->
+    <ImageView
+        android:id="@+id/splash_road2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/road"
+        android:contentDescription="road" />
+
+</RelativeLayout>
