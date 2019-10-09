@@ -32,8 +32,7 @@
         <item name="android:textColor">@color/dtc_site_light_color</item>
         <item name="android:textSize">12sp</item>
 
-
-
     </style>
+
 
 </resources>
