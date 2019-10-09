@@ -4,17 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,21 +33,14 @@ import android.widget.Toast;
 
 import com.example.dtcbuspass.R;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-public class StudentPassActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class SeniorCitizenActivity extends AppCompatActivity implements View.OnClickListener {
 
     File mPhotoFile;
     private Button btn;
@@ -79,7 +66,7 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_pass);
+        setContentView(R.layout.activity_disabled_pass);
 
 
 
@@ -135,7 +122,7 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        StudentPassActivity.this,
+                        SeniorCitizenActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
                         year,month,day);
@@ -330,7 +317,7 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
 
         final CharSequence[] items={"Gallery", "Cancel"};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(StudentPassActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(SeniorCitizenActivity.this);
         builder.setTitle("Add Image");
 
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -387,9 +374,9 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
 
 
 
-            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            startActivityForResult(intent, REQUEST_GALLERY_IMAGE);
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_GALLERY_IMAGE);
 
 
 
@@ -470,7 +457,6 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    @Override
     public void onClick(View view) {
 
 
@@ -495,4 +481,5 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
         reDefinedWidthHeight();
 
     }
+
 }

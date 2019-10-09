@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.dtcbuspass.SelectPass.GeneralPassActivity;
+import com.example.dtcbuspass.SelectPass.StudentPassActivity;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -39,6 +40,7 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
 
         radioGroup=findViewById(R.id.radioGroup);
         back_arrow=findViewById(R.id.buy_pas_back_btn);
+
 
         datePickerFunction();
         radioGroupItemsClickListner();
@@ -82,8 +84,6 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
 
     @Override
     public void onNegativeButtonClicked() {
-
-       // tvChangePassDuration.setText("Dialog cancel");
 
     }
 
@@ -145,6 +145,26 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
                 {
 
                     startActivity(new Intent(BuyBusPassActivity.this, GeneralPassActivity.class));
+
+
+                }
+
+                else if(checkedId==R.id.student_radio_btn)
+                {
+                    startActivity(new Intent(BuyBusPassActivity.this, StudentPassActivity.class));
+
+
+                }
+                else if(checkedId==R.id.disable_radio_btn)
+                {
+                    startActivity(new Intent(BuyBusPassActivity.this, StudentPassActivity.class));
+
+
+                }
+
+                else if(checkedId==R.id.senr_citizen_radio_btn)
+                {
+                    startActivity(new Intent(BuyBusPassActivity.this, StudentPassActivity.class));
 
 
                 }
