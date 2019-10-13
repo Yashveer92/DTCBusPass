@@ -99,16 +99,16 @@
 
 
 
-                        <TextView
-                            android:id="@+id/dob"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/gotham_book"
-                            android:hint="Date of Birth"
-                            android:paddingTop="12dp"
-                            android:paddingBottom="12dp"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/dob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham_book"
+                        android:hint="Date of Birth"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -119,13 +119,13 @@
 
 
 
-                        <Spinner
-                            android:id="@+id/choose_gender"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginLeft="-7dp"
-                            android:background="@color/background_spinner"
-                            android:spinnerMode="dropdown" />
+                    <Spinner
+                        android:id="@+id/choose_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="-7dp"
+                        android:background="@color/background_spinner"
+                        android:spinnerMode="dropdown" />
 
 
                     <View
@@ -156,7 +156,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_doc1_img"
+                                    android:id="@+id/add_photograph_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:paddingLeft="-5dp"
@@ -164,7 +164,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/addharcard_tv"
+                                    android:id="@+id/photograph_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -177,7 +177,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove1"
+                                android:id="@+id/remove_photograph"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -200,7 +200,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/doc_img1"
+                                android:id="@+id/photograph_img_vu"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -235,7 +235,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_doc2_img"
+                                    android:id="@+id/add_addhar_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:paddingLeft="-5dp"
@@ -243,7 +243,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/addharcard_tv2"
+                                    android:id="@+id/addharcard_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -256,7 +256,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove2"
+                                android:id="@+id/remove_aadhar"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -279,7 +279,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/doc_img2"
+                                android:id="@+id/addharCard_img_vu"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -315,14 +315,14 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_imagedocument"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
 
+
+
 </LinearLayout>
+
+

@@ -51,8 +51,9 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
     TextView date_of_birth;
     Bitmap bitmap;
     private String  buttonId;
-    TextView remove_img_tv1,remove_img_tv2,addharcard_tv;
-    ImageView doc1,doc2,add_doc_btn1,add_doc_btn2;
+    TextView remove_photograph_tv, remove_aadhar_tv,photograph_tv,addharcard_tv;
+    ImageView photograph, aadharCard, add_photograph_btn, add_Aadhar_btn;
+
 
     private Uri photoURI = null;
 
@@ -66,26 +67,25 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_disabled_pass);
+        setContentView(R.layout.activity_senior_citizen);
 
 
-
-        doc1=findViewById(R.id.doc_img1);
-        doc2=findViewById(R.id.doc_img2);
-        add_doc_btn1=findViewById(R.id.add_doc1_img);
+        photograph =findViewById(R.id.photograph_img_vu);
+        aadharCard =findViewById(R.id.addharCard_img_vu);
+        add_photograph_btn =findViewById(R.id.add_photograph_btn);
+        // addharcard_tv=findViewById(R.id.addharcard_tv);
+        add_Aadhar_btn =findViewById(R.id.add_addhar_btn);
         addharcard_tv=findViewById(R.id.addharcard_tv);
-        add_doc_btn2=findViewById(R.id.add_doc2_img);
+        photograph_tv=findViewById(R.id.photograph_tv);
 
-        remove_img_tv1=findViewById(R.id.remove1);
-        remove_img_tv2=findViewById(R.id.remove2);
+        remove_photograph_tv =findViewById(R.id.remove_photograph);
+        remove_aadhar_tv =findViewById(R.id.remove_aadhar);
         date_of_birth=findViewById(R.id.dob);
 
 
-
-        remove_img_tv2.setOnClickListener(this);
-        remove_img_tv1.setOnClickListener(this);
-
         spin =  findViewById(R.id.choose_gender);
+        remove_aadhar_tv.setOnClickListener(this);
+        remove_photograph_tv.setOnClickListener(this);
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,gender);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,7 +100,7 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#B8B5B5"));
                 ((TextView) parent.getChildAt(0)).setTextSize(17);
 
-                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
 
             }
@@ -259,9 +259,29 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
 
         if(flag==1)
         {
-            doc1.setImageBitmap(bitmap);
-            add_doc_btn1.setVisibility(View.GONE);
-            remove_img_tv1.setVisibility(View.VISIBLE);
+            photograph.setImageBitmap(bitmap);
+            add_photograph_btn.setVisibility(View.GONE);
+            remove_photograph_tv.setVisibility(View.VISIBLE);
+
+
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(0);
+                photograph_tv.setLayoutParams(params);
+            }
+            photograph.getLayoutParams().height = 400;
+
+            photograph.getLayoutParams().width = 650;
+
+            photograph.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        }
+        else if (flag==2)
+        {
+
+            aadharCard.setImageBitmap(bitmap);
+            add_Aadhar_btn.setVisibility(View.GONE);
+            remove_aadhar_tv.setVisibility(View.VISIBLE);
             addharcard_tv=findViewById(R.id.addharcard_tv);
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -269,32 +289,12 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
                 params.setMarginStart(0);
                 addharcard_tv.setLayoutParams(params);
             }
-            doc1.getLayoutParams().height = 400;
 
-            doc1.getLayoutParams().width = 650;
+            aadharCard.getLayoutParams().height = 400;
 
-            doc1.setScaleType(ImageView.ScaleType.FIT_XY);
+            aadharCard.getLayoutParams().width = 650;
 
-        }
-        else if (flag==2)
-        {
-
-            doc2.setImageBitmap(bitmap);
-            add_doc_btn2.setVisibility(View.GONE);
-            remove_img_tv2.setVisibility(View.VISIBLE);
-            addharcard_tv=findViewById(R.id.addharcard_tv2);
-
-            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                params.setMarginStart(0);
-                addharcard_tv.setLayoutParams(params);
-            }
-
-            doc2.getLayoutParams().height = 400;
-
-            doc2.getLayoutParams().width = 650;
-
-            doc2.setScaleType(ImageView.ScaleType.FIT_XY);
+            aadharCard.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
         }
@@ -329,14 +329,14 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
                     switch(view.getId())
                     {
 
-                        case R.id.add_doc1_img:
+                        case R.id.add_photograph_btn:
                             flag=1;
-                            String camera1="add_doc1_img";
+                            String camera1="photograph";
                             chooseGalleryPhoto(camera1,buttonId);
                             break;
-                        case R.id.add_doc2_img:
+                        case R.id.add_addhar_btn:
                             flag=2;
-                            String camera2="add_doc2_img";
+                            String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
                             break;
                     }
@@ -422,15 +422,15 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
         if(flag2==1)
         {
 
-            doc1.getLayoutParams().height = 0;
+            photograph.getLayoutParams().height = 0;
 
-            doc1.getLayoutParams().width = 0;
-            add_doc_btn1.setVisibility(View.VISIBLE);
+            photograph.getLayoutParams().width = 0;
+            add_photograph_btn.setVisibility(View.VISIBLE);
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 params.setMarginStart(20);
-                addharcard_tv.setLayoutParams(params);
+                photograph_tv.setLayoutParams(params);
             }
 
 
@@ -440,10 +440,10 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
         {
 
 
-            doc2.getLayoutParams().height = 0;
+            aadharCard.getLayoutParams().height = 0;
 
-            doc2.getLayoutParams().width = 0;
-            add_doc_btn2.setVisibility(View.VISIBLE);
+            aadharCard.getLayoutParams().width = 0;
+            add_Aadhar_btn.setVisibility(View.VISIBLE);
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -457,21 +457,22 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
     }
 
 
+    @Override
     public void onClick(View view) {
 
 
         switch (view.getId())
         {
-            case R.id.remove1:
+            case R.id.remove_photograph:
                 flag2=1;
-                doc1.setImageBitmap(null);
-                remove_img_tv1.setVisibility(View.GONE);
+                photograph.setImageBitmap(null);
+                remove_photograph_tv.setVisibility(View.GONE);
                 break;
 
-            case R.id.remove2:
+            case R.id.remove_aadhar:
                 flag2=2;
-                doc2.setImageBitmap(null);
-                remove_img_tv2.setVisibility(View.GONE);
+                aadharCard.setImageBitmap(null);
+                remove_aadhar_tv.setVisibility(View.GONE);
                 break;
 
 
@@ -481,5 +482,4 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
         reDefinedWidthHeight();
 
     }
-
 }
