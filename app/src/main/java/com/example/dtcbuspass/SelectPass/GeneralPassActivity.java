@@ -109,7 +109,7 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
 
                 String item = parent.getItemAtPosition(position).toString();
 
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#B8B5B5"));
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#5a5a5a"));
                 ((TextView) parent.getChildAt(0)).setTextSize(17);
 
                 // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();

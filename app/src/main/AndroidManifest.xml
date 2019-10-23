@@ -19,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectPass.DisabledPassActivity"></activity>
+        <activity android:name=".RenewPass.RenewBussPass"></activity>
+        <activity android:name=".RenewPass.RenewPassNumber" />
+        <activity android:name=".Application_status_details" />
+        <activity android:name=".TrackApplicatinStatus" />
+        <activity android:name=".PassHistory" />
+        <activity android:name=".Feedback_and_Suggestions" />
+        <activity android:name=".SelectPass.DisabledPassActivity" />
         <activity android:name=".SelectPass.SeniorCitizenActivity" />
         <activity android:name=".SelectPass.StudentPassActivity" />
         <activity android:name=".ImagePickerActivity" />
@@ -32,7 +38,9 @@
         <activity
             android:name=".HomePage"
             android:theme="@style/main_home_page" />
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

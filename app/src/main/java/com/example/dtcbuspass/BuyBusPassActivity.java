@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.dtcbuspass.SelectPass.DisabledPassActivity;
 import com.example.dtcbuspass.SelectPass.GeneralPassActivity;
+import com.example.dtcbuspass.SelectPass.SeniorCitizenActivity;
 import com.example.dtcbuspass.SelectPass.StudentPassActivity;
 
 import java.text.DateFormat;
@@ -157,14 +159,14 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
                 }
                 else if(checkedId==R.id.disable_radio_btn)
                 {
-                    startActivity(new Intent(BuyBusPassActivity.this, StudentPassActivity.class));
+                    startActivity(new Intent(BuyBusPassActivity.this, DisabledPassActivity.class));
 
 
                 }
 
                 else if(checkedId==R.id.senr_citizen_radio_btn)
                 {
-                    startActivity(new Intent(BuyBusPassActivity.this, StudentPassActivity.class));
+                    startActivity(new Intent(BuyBusPassActivity.this, SeniorCitizenActivity.class));
 
 
                 }

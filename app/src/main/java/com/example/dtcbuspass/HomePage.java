@@ -16,16 +16,17 @@ import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
 import com.example.dtcbuspass.LoginSignUp.LoginActivity;
+import com.example.dtcbuspass.RenewPass.RenewPassNumber;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
 
     ViewFlipper viewFlipper;
     private ActionBarDrawerToggle mToggle;
     private DrawerLayout mDrawerLayout;
-    private  LinearLayout buyBusPass;
+    private  LinearLayout buyBusPass,feedback_and_suggestions,history,track_application_status,renew_pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +38,16 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         BottomNavigationViewHelper.removeShiftMode(navigation);
 
         buyBusPass=findViewById(R.id.buy_bus_pass_ll);
-        buyBusPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        history=findViewById(R.id.history);
+        renew_pass=findViewById(R.id.renew_pass);
+        track_application_status=findViewById(R.id.track_application_status_ll);
+        feedback_and_suggestions=findViewById(R.id.feedback_and_suggestions);
+        feedback_and_suggestions.setOnClickListener(this);
 
-                startActivity(new Intent(HomePage.this,BuyBusPassActivity.class));
-
-
-            }
-        });
+        buyBusPass.setOnClickListener(this);
+        history.setOnClickListener(this);
+        track_application_status.setOnClickListener(this);
+        renew_pass.setOnClickListener(this);
 
         setNavigationDrawer();
         setBottomNavigation();
@@ -194,6 +196,49 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         //close navigation drawer
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+
+        switch (view.getId())
+        {
+
+            case R.id.buy_bus_pass_ll:
+
+            startActivity(new Intent(HomePage.this,BuyBusPassActivity.class));
+            //finish();
+            break;
+
+            case R.id.feedback_and_suggestions:
+
+                startActivity(new Intent(HomePage.this,Feedback_and_Suggestions.class));
+                //finish();
+                break;
+
+            case R.id.history:
+
+                startActivity(new Intent(HomePage.this,PassHistory.class));
+                //finish();
+                break;
+            case R.id.track_application_status_ll:
+
+                startActivity(new Intent(HomePage.this,TrackApplicatinStatus.class));
+                //finish();
+                break;
+
+            case R.id.renew_pass:
+
+                startActivity(new Intent(HomePage.this, RenewPassNumber.class));
+                //finish();
+                break;
+
+
+        }
+
+
+
     }
 }
 

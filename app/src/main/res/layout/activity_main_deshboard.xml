@@ -279,6 +279,7 @@
                     android:layout_margin="10dp">
 
                     <LinearLayout
+                        android:id="@+id/renew_pass"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
@@ -323,6 +324,7 @@
                     android:layout_margin="10dp">
 
                     <LinearLayout
+                        android:id="@+id/track_application_status_ll"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
@@ -398,6 +400,7 @@
                     android:layout_margin="10dp">
 
                     <LinearLayout
+                        android:id="@+id/history"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
@@ -429,6 +432,7 @@
                     android:layout_margin="10dp">
 
                     <LinearLayout
+                        android:id="@+id/feedback_and_suggestions"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"

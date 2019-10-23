@@ -97,6 +97,38 @@
                         android:background="@color/background4" />
 
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+
+                        android:textColorHint="@color/darkgray"
+                        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:fontFamily="@font/gotham_book"
+                            android:hint="Email Id"
+                            android:inputType="textEmailAddress"
+                            android:paddingTop="12dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/background4" />
+
+
+
+
+
 
 
                     <TextView
@@ -105,10 +137,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham_book"
                         android:hint="Date of Birth"
+                        android:textColorHint="@color/darkgray"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
+
 
                     <View
                         android:layout_width="match_parent"
@@ -305,6 +339,8 @@
                         android:layout_marginBottom="20dp"
                         android:textColor="@color/white"
                         android:layout_marginLeft="25dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="12sp"
                         android:layout_marginRight="25dp"
                         android:background="@drawable/login_custom_btn"
                         android:text="Proceed"/>

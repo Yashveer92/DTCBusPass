@@ -64,8 +64,8 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
     TextView date_of_birth;
     Bitmap bitmap;
     private String  buttonId;
-    TextView remove_photograph_tv, remove_aadhar_tv,photograph_tv,addharcard_tv;
-    ImageView photograph, aadharCard, add_photograph_btn, add_Aadhar_btn;
+    TextView remove_photograph_tv, remove_aadhar_tv,photograph_tv,addharcard_tv,verification_letter_tv,remove_verification_letter_tv,student_id_tv,remove_student_id_tv;
+    ImageView photograph, aadharCard, add_photograph_btn,add_verification_letter,add_student_id, add_Aadhar_btn,add_verification_letter_btn,add_student_id_btn;
 
 
     private Uri photoURI = null;
@@ -90,6 +90,14 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
         add_Aadhar_btn =findViewById(R.id.add_addhar_btn);
         addharcard_tv=findViewById(R.id.addharcard_tv);
         photograph_tv=findViewById(R.id.photograph_tv);
+        verification_letter_tv=findViewById(R.id.student_verification_tv);
+        student_id_tv=findViewById(R.id.student_id_tv);
+        add_verification_letter_btn=findViewById(R.id.add_student_verification_letter_btn);
+        add_student_id_btn=findViewById(R.id.add_student_id_btn);
+        add_verification_letter=findViewById(R.id.student_verification_img_vu);
+        add_student_id=findViewById(R.id.student_id_img_vu);
+        remove_verification_letter_tv=findViewById(R.id.remove_student_vrification_letter);
+        remove_student_id_tv=findViewById(R.id.remove_student_id);
 
         remove_photograph_tv =findViewById(R.id.remove_photograph);
         remove_aadhar_tv =findViewById(R.id.remove_aadhar);
@@ -99,6 +107,8 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
         spin =  findViewById(R.id.choose_gender);
         remove_aadhar_tv.setOnClickListener(this);
         remove_photograph_tv.setOnClickListener(this);
+        remove_student_id_tv.setOnClickListener(this);
+        remove_verification_letter_tv.setOnClickListener(this);
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,gender);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,7 +120,7 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
 
                 String item = parent.getItemAtPosition(position).toString();
 
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#B8B5B5"));
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#5a5a5a"));
                 ((TextView) parent.getChildAt(0)).setTextSize(17);
 
                // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
@@ -268,16 +278,13 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
     private void setImage(Bitmap bitmap) {
 
 
-
-
-        if(flag==1)
-        {
+        if (flag == 1) {
             photograph.setImageBitmap(bitmap);
             add_photograph_btn.setVisibility(View.GONE);
             remove_photograph_tv.setVisibility(View.VISIBLE);
 
 
-            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 params.setMarginStart(0);
                 photograph_tv.setLayoutParams(params);
@@ -288,16 +295,14 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
 
             photograph.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        }
-        else if (flag==2)
-        {
+        } else if (flag == 2) {
 
             aadharCard.setImageBitmap(bitmap);
             add_Aadhar_btn.setVisibility(View.GONE);
             remove_aadhar_tv.setVisibility(View.VISIBLE);
 
 
-            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 params.setMarginStart(0);
                 addharcard_tv.setLayoutParams(params);
@@ -310,13 +315,49 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
             aadharCard.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
+        } else if (flag == 3) {
+
+            add_student_id.setImageBitmap(bitmap);
+            add_student_id_btn.setVisibility(View.GONE);
+            remove_student_id_tv.setVisibility(View.VISIBLE);
+
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(0);
+                student_id_tv.setLayoutParams(params);
+            }
+
+            add_student_id.getLayoutParams().height = 400;
+
+            add_student_id.getLayoutParams().width = 650;
+
+            add_student_id.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
         }
 
+        else if (flag == 4) {
+
+            add_verification_letter.setImageBitmap(bitmap);
+            add_verification_letter_btn.setVisibility(View.GONE);
+            remove_verification_letter_tv.setVisibility(View.VISIBLE);
 
 
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(0);
+                verification_letter_tv.setLayoutParams(params);
+            }
+
+            add_verification_letter.getLayoutParams().height = 400;
+
+            add_verification_letter.getLayoutParams().width = 650;
+
+            add_verification_letter.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
-
+        }
 
     }
 
@@ -351,6 +392,17 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
                             flag=2;
                             String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
+                            break;
+
+                          case R.id.add_student_id_btn:
+                            flag=3;
+                            String camera3="studentId";
+                            chooseGalleryPhoto(camera3,buttonId);
+                            break;
+                        case R.id.add_student_verification_letter_btn:
+                            flag=4;
+                            String camera4="verification_Letter";
+                            chooseGalleryPhoto(camera4,buttonId);
                             break;
                     }
 
@@ -467,6 +519,43 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
         }
 
 
+
+        else if(flag2==3)
+        {
+
+
+            add_student_id.getLayoutParams().height = 0;
+
+            add_student_id.getLayoutParams().width = 0;
+            add_student_id_btn.setVisibility(View.VISIBLE);
+
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(20);
+                student_id_tv.setLayoutParams(params);
+            }
+
+        }
+
+
+        else if(flag2==4)
+        {
+
+
+            add_verification_letter.getLayoutParams().height = 0;
+
+            add_verification_letter.getLayoutParams().width = 0;
+            add_verification_letter_btn.setVisibility(View.VISIBLE);
+
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(20);
+                verification_letter_tv.setLayoutParams(params);
+            }
+
+        }
+
+
     }
 
 
@@ -486,6 +575,16 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
                 flag2=2;
                 aadharCard.setImageBitmap(null);
                 remove_aadhar_tv.setVisibility(View.GONE);
+                break;
+            case R.id.remove_student_id:
+                flag2=3;
+                add_student_id.setImageBitmap(null);
+                remove_student_id_tv.setVisibility(View.GONE);
+                break;
+            case R.id.remove_student_vrification_letter:
+                flag2=4;
+                add_verification_letter.setImageBitmap(null);
+                remove_verification_letter_tv.setVisibility(View.GONE);
                 break;
 
 

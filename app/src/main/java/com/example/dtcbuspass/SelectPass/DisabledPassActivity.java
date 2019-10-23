@@ -56,8 +56,8 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
     TextView date_of_birth;
     Bitmap bitmap;
     private String  buttonId;
-    TextView remove_photograph_tv, remove_aadhar_tv,photograph_tv,addharcard_tv;
-    ImageView photograph, aadharCard, add_photograph_btn, add_Aadhar_btn;
+    TextView remove_photograph_tv, remove_aadhar_tv,remove_certificate_tv,certficate_tv,photograph_tv,addharcard_tv;
+    ImageView photograph, aadharCard,certificate, add_photograph_btn, add_Aadhar_btn,add_certificate_btn;
 
 
     private Uri photoURI = null;
@@ -77,20 +77,26 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
 
         photograph =findViewById(R.id.photograph_img_vu);
         aadharCard =findViewById(R.id.addharCard_img_vu);
+        certificate=findViewById(R.id.certificate_img_vu);
         add_photograph_btn =findViewById(R.id.add_photograph_btn);
+        add_certificate_btn=findViewById(R.id.add_disbled_certificate_btn);
         // addharcard_tv=findViewById(R.id.addharcard_tv);
         add_Aadhar_btn =findViewById(R.id.add_addhar_btn);
 
         remove_photograph_tv =findViewById(R.id.remove_photograph);
         remove_aadhar_tv =findViewById(R.id.remove_aadhar);
+        remove_certificate_tv=findViewById(R.id.remove_certificate);
         date_of_birth=findViewById(R.id.dob);
         addharcard_tv=findViewById(R.id.addharcard_tv);
         photograph_tv=findViewById(R.id.photograph_tv);
+        certficate_tv=findViewById(R.id.disablitity_certificate_tv);
+
 
 
         spin =  findViewById(R.id.choose_gender);
         remove_aadhar_tv.setOnClickListener(this);
         remove_photograph_tv.setOnClickListener(this);
+        remove_certificate_tv.setOnClickListener(this);
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,gender);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -102,7 +108,7 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
 
                 String item = parent.getItemAtPosition(position).toString();
 
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#B8B5B5"));
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#5a5a5a"));
                 ((TextView) parent.getChildAt(0)).setTextSize(17);
 
                 // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
@@ -304,6 +310,29 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
 
         }
 
+        else if (flag==3)
+        {
+
+            certificate.setImageBitmap(bitmap);
+            add_certificate_btn.setVisibility(View.GONE);
+            remove_certificate_tv.setVisibility(View.VISIBLE);
+            certficate_tv=findViewById(R.id.addharcard_tv);
+
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(0);
+                certficate_tv.setLayoutParams(params);
+            }
+
+            certificate.getLayoutParams().height = 400;
+
+            certificate.getLayoutParams().width = 650;
+
+            certificate.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
+        }
+
 
 
 
@@ -343,6 +372,11 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
                             flag=2;
                             String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
+                            break;
+                        case R.id.add_disbled_certificate_btn:
+                            flag=3;
+                            String camera3="certificate";
+                            chooseGalleryPhoto(camera3,buttonId);
                             break;
                     }
 
@@ -458,6 +492,23 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
 
         }
 
+        else if(flag2==3)
+        {
+
+
+            certificate.getLayoutParams().height = 0;
+
+            certificate.getLayoutParams().width = 0;
+            add_certificate_btn.setVisibility(View.VISIBLE);
+
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.setMarginStart(20);
+                certficate_tv.setLayoutParams(params);
+            }
+
+        }
+
 
     }
 
@@ -478,6 +529,12 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
                 flag2=2;
                 aadharCard.setImageBitmap(null);
                 remove_aadhar_tv.setVisibility(View.GONE);
+                break;
+
+            case R.id.remove_certificate:
+                flag2=3;
+                certificate.setImageBitmap(null);
+                remove_certificate_tv.setVisibility(View.GONE);
                 break;
 
 

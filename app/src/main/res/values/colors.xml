@@ -39,8 +39,9 @@
     <color name="red_dark">#990000</color>
     <color name="white_2">#D8D8D8</color>
     <color name="lignt_pink">#80F08080</color>
-
+    <color name="black1">#A5A5A5</color>
     <color name="greendtccolor">#0D6227</color>
+    <color name="app_caption_dark_grey">#5a5a5a</color>
 
     <color name="deeppurple">#7c4dff</color>
     <color name="green3">#00bfa5</color>
@@ -51,7 +52,7 @@
 
     <color name="dtc_site_medium_color">#7A000F</color>
     <color name="dtc_site_dark_color">#610008</color>
-    <color name="darkgray">#B8B5B5</color>
+    <color name="darkgray">#5a5a5a</color>
     <color name="link_color">#6666A7</color>
 
     <color name="profile_default_tint">#e0e0e0</color>
