@@ -10,10 +10,7 @@
 		android:icon="@drawable/home_page_asset"
 		android:title="Home" />
 
-	<item
-		android:id="@+id/navigation_digital_pass"
-		android:icon="@drawable/smartphone_asset"
-		android:title="Digital Pass" />
+
 
 
 	<item

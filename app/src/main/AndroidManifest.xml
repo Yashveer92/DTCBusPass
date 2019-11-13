@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RenewPass.RenewBussPass"></activity>
+        <activity android:name=".MoreInfoActivity"></activity>
+        <activity android:name=".RenewPass.RenewBussPass" />
         <activity android:name=".RenewPass.RenewPassNumber" />
         <activity android:name=".Application_status_details" />
         <activity android:name=".TrackApplicatinStatus" />

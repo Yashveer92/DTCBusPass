@@ -356,6 +356,7 @@
                     android:layout_margin="10dp">
 
                     <LinearLayout
+                        android:id="@+id/more_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
@@ -374,6 +375,9 @@
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
                             android:text="More Info."/>
+
+
+
 
 
                     </LinearLayout>

@@ -26,7 +26,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     ViewFlipper viewFlipper;
     private ActionBarDrawerToggle mToggle;
     private DrawerLayout mDrawerLayout;
-    private  LinearLayout buyBusPass,feedback_and_suggestions,history,track_application_status,renew_pass;
+    private  LinearLayout buyBusPass,feedback_and_suggestions,history,track_application_status,renew_pass,moreinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         track_application_status=findViewById(R.id.track_application_status_ll);
         feedback_and_suggestions=findViewById(R.id.feedback_and_suggestions);
         feedback_and_suggestions.setOnClickListener(this);
+
+        moreinfo=findViewById(R.id.more_info);
+        moreinfo.setOnClickListener(this);
 
         buyBusPass.setOnClickListener(this);
         history.setOnClickListener(this);
@@ -231,6 +234,12 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             case R.id.renew_pass:
 
                 startActivity(new Intent(HomePage.this, RenewPassNumber.class));
+                //finish();
+                break;
+
+            case R.id.more_info:
+
+                startActivity(new Intent(HomePage.this, MoreInfoActivity.class));
                 //finish();
                 break;
 
