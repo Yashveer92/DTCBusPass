@@ -22,7 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-//yash
+
     ViewFlipper viewFlipper;
     private ActionBarDrawerToggle mToggle;
     private DrawerLayout mDrawerLayout;
