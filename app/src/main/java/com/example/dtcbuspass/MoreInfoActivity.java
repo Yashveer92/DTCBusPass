@@ -25,6 +25,8 @@ public class MoreInfoActivity extends AppCompatActivity {
             }
         });
         view.getSettings().setJavaScriptEnabled(true);
+
+        //redirect on dtc site
         view.loadUrl("http://www.dtc.nic.in/content/get-dtc-pass");
 
     }
