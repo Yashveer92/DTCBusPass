@@ -24,6 +24,7 @@ public class Feedback_and_Suggestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 onBackPressed();
+                finish();
 
             }
         });

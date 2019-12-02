@@ -7,34 +7,79 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.dtcbuspass.HomePage;
 import com.example.dtcbuspass.ProfileActivity;
 import com.example.dtcbuspass.R;
+import com.example.dtcbuspass.network.ApiService;
+import com.example.dtcbuspass.network.RetrofitBuilder;
+import com.example.dtcbuspass.network.TokenManager;
+import com.example.dtcbuspass.network.Utils;
+import com.example.dtcbuspass.network.entities.AccessToken;
+import com.example.dtcbuspass.network.entities.ApiError;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button login;
     TextView sighUp;
+
+    @BindView(R.id.edt_email_login)
+
+    TextInputLayout userEmail;
+
+    @BindView(R.id.edt_pass_login)
+
+    TextInputLayout userPass;
+
+    ApiService service;
+
+
+    TokenManager tokenManager;
+
+    AwesomeValidation validator;
+    Call<AccessToken> call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login=findViewById(R.id.login_to_app);
         sighUp=findViewById(R.id.btv_signup);
 
 
+        ButterKnife.bind(this);
+
+        service = RetrofitBuilder.createService(ApiService.class);
+
+        tokenManager = TokenManager.getInstance(getSharedPreferences("preferences", MODE_PRIVATE));
+
+        validator = new AwesomeValidation(ValidationStyle.TEXT_INPUT_LAYOUT);
+
+        setupRules();
+
         sighUp.setOnClickListener(this);
 
-        login.setOnClickListener(this);
 
         final TextView tv_changePassword    = findViewById(R.id.forgot_password);
 
@@ -54,16 +99,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId())
         {
 
-            case R.id.login_to_app:
-
-                Intent login=new Intent(LoginActivity.this, HomePage.class);
-                startActivity(login);
-                finish();
-                break;
             case R.id.btv_signup:
                 Intent signup=new Intent(LoginActivity.this,SignUpActivity.class);
                 startActivity(signup);
-                finish();
+                //finish();
                 break;
 
         }
@@ -133,7 +172,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     password_error.setText("*Current password is wrong");
                     et_new_pass.setText("");
                     et_confirm_pass.setText("");
-
                     return;
                 }*/
 
@@ -176,4 +214,117 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     }
+
+
+    @OnClick(R.id.login_to_app)
+
+    void login() {
+
+        String email = userEmail.getEditText().getText().toString();
+
+        String password = userPass.getEditText().getText().toString();
+
+        userEmail.setError(null);
+        userPass.setError(null);
+
+        validator.clear();
+
+        if (validator.validate()) {
+
+            call = service.login(email, password);
+            call.enqueue(new Callback<AccessToken>() {
+                @Override
+                public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+
+
+
+
+                    if (response.isSuccessful()) {
+
+                        tokenManager.saveToken(response.body());
+
+                        Toast.makeText(LoginActivity.this, "Successfully Login", Toast.LENGTH_LONG).show();
+
+                        startActivity(new Intent(LoginActivity.this, HomePage.class));
+                        finish();
+
+                    } else {
+
+                        if (response.code() == 422) {
+
+                            handleErrors(response.errorBody());
+                        }
+
+                        if (response.code() == 401) {
+                            ApiError apiError = Utils.convertErrors(response.errorBody());
+
+                            Toast.makeText(LoginActivity.this, apiError.getMessage(), Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<AccessToken> call, Throwable t) {
+
+                }
+            });
+
+        }
+    }
+
+
+
+
+    private void handleErrors(ResponseBody response)
+    {
+
+
+        ApiError apiError = Utils.convertErrors(response);
+
+        for(Map.Entry<String, List<String>> error : apiError.getError().entrySet())
+        {
+
+
+            if(error.getKey().equals("username"))
+            {
+                userEmail.setError(error.getValue().get(0));
+            }
+
+            if(error.getKey().equals("password"))
+            {
+                userPass.setError(error.getValue().get(0));
+            }
+
+
+        }
+
+    }
+
+    public  void  setupRules()
+    {
+
+       /* validator.addValidation(this, R.id.edt_email_login, Patterns.EMAIL_ADDRESS, R.string.err_email);
+
+        validator.addValidation(this, R.id.edt_pass_login, "[a-zA-Z0-9]{6,}", R.string.err_password);
+*/
+
+
+    }
+
+    protected void onDestroy()
+    {
+
+        super.onDestroy();
+
+        if (call==null)
+        {
+
+            call.cancel();
+            call = null;
+        }
+    }
+
 }

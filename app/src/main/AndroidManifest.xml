@@ -20,25 +20,56 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MoreInfoActivity"></activity>
-        <activity android:name=".RenewPass.RenewBussPass" />
-        <activity android:name=".RenewPass.RenewPassNumber" />
-        <activity android:name=".Application_status_details" />
-        <activity android:name=".TrackApplicatinStatus" />
-        <activity android:name=".PassHistory" />
-        <activity android:name=".Feedback_and_Suggestions" />
-        <activity android:name=".SelectPass.DisabledPassActivity" />
-        <activity android:name=".SelectPass.SeniorCitizenActivity" />
-        <activity android:name=".SelectPass.StudentPassActivity" />
+        <activity android:name=".RenewPass.RenewBussPass"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".RenewPass.RenewPassNumber"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Application_status_details"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".TrackApplicatinStatus"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".PassHistory"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Feedback_and_Suggestions"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".SelectPass.DisabledPassActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".SelectPass.SeniorCitizenActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".SelectPass.StudentPassActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".ImagePickerActivity" />
-        <activity android:name=".SelectPass.GeneralPassActivity" />
-        <activity android:name=".BuyBusPassActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".LoginSignUp.SignUpActivity" />
-        <activity android:name=".LoginSignUp.LoginActivity" />
+        <activity android:name=".SelectPass.GeneralPassActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".BuyBusPassActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".EditProfileActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".LoginSignUp.SignUpActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".LoginSignUp.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HomePage"
-            android:theme="@style/main_home_page" />
+            android:theme="@style/main_home_page"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">

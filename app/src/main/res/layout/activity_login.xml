@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:paddingVertical="48dp"
+                    android:paddingVertical="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="16dp"
@@ -143,70 +143,125 @@
 
 
 
+
                     <LinearLayout
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
-                        android:paddingBottom="7dp"
-                        android:paddingTop="7dp"
-                        android:background="@drawable/login_custom_edittxt"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
                         android:layout_height="wrap_content">
 
 
+                        <!--
+                                                <ImageView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:paddingLeft="8dp"
+                                                    android:src="@drawable/email_asset"/>-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingLeft="8dp"
-                            android:src="@drawable/smartphone_asset"/>
 
 
-                        <EditText
-                            android:id="@+id/phone_no"
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="10 digit mobile number"
-                            android:maxLength="10"
-                            android:textSize="16sp"
-                            android:background="@null"
-                            android:paddingLeft="12dp"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@android:color/black"
-                            android:fontFamily="@font/gotham_book"
-                            android:inputType="phone"/>
+                            app:hintEnabled="false"
+                            android:id="@+id/edt_email_login">
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Email"
+                                android:textSize="16sp"
+                                android:paddingLeft="5dp"
+                                android:drawablePadding="10dp"
+                                android:drawableLeft="@drawable/email_asset"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@android:color/black"
+                                android:fontFamily="@font/gotham_book"
+                                android:inputType="textEmailAddress"/>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
+
+                    <!-- <LinearLayout
+
+                         android:layout_marginTop="16dp"
+                         android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                         android:paddingBottom="7dp"
+                         android:paddingTop="7dp"
+                         android:background="@drawable/login_custom_edittxt"
+                         android:layout_height="wrap_content">
+
+
+
+                         <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center_vertical"
+                             android:paddingLeft="8dp"
+                             android:src="@drawable/smartphone_asset"/>
+
+
+
+                         <com.google.android.material.textfield.TextInputLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             app:hintEnabled="false"
+                             android:id="@+id/edt_phone">
+                         <EditText
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:hint="10 digit mobile number"
+                             android:maxLength="10"
+                             android:textSize="16sp"
+                             android:background="@null"
+                             android:paddingLeft="12dp"
+                             android:layout_gravity="center_vertical"
+                             android:textColor="@android:color/black"
+                             android:fontFamily="@font/gotham_book"
+                             android:inputType="phone"/>
+                         </com.google.android.material.textfield.TextInputLayout>
+                     </LinearLayout>-->
+
                     <LinearLayout
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
-                        android:paddingBottom="7dp"
-                        android:paddingTop="7dp"
-                        android:background="@drawable/login_custom_edittxt"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
                         android:layout_height="wrap_content">
 
 
+                        <!--
+                                                <ImageView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:paddingLeft="8dp"
+                                                    android:src="@drawable/lock_asset"/>-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingLeft="8dp"
-                            android:src="@drawable/lock_asset"/>>
-
-                        <EditText
-                            android:id="@+id/password"
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Password"
-                            android:textSize="16sp"
-                            android:paddingLeft="12dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@null"
-                            android:textColor="@android:color/black"
-                            android:fontFamily="@font/gotham_book"
-                            android:inputType="textPassword"/>
+                            app:hintEnabled="false"
+                            android:id="@+id/edt_pass_login">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Password"
+                                android:textSize="16sp"
+                                android:paddingLeft="5dp"
+                                android:drawablePadding="10dp"                                android:drawableLeft="@drawable/lock_asset"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@android:color/black"
+                                android:fontFamily="@font/gotham_book"
+                                android:inputType="textPassword"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
+
                     <TextView
                         android:id="@+id/forgot_password"
                         android:layout_width="match_parent"
@@ -222,7 +277,7 @@
                         android:id="@+id/login_to_app"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="44dp"
+                        android:layout_marginTop="34dp"
                         android:textColor="@color/white"
                         android:background="@drawable/login_custom_btn"
                         android:text="Login"/>
