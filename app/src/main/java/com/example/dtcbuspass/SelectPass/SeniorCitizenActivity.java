@@ -70,16 +70,16 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_senior_citizen);
 
 
-        photograph =findViewById(R.id.photograph_img_vu);
-        aadharCard =findViewById(R.id.addharCard_img_vu);
-        add_photograph_btn =findViewById(R.id.add_photograph_btn);
+        photograph =findViewById(R.id.photograph_img_vu_senior_citizen);
+        aadharCard =findViewById(R.id.addharCard_img_vu_senior_citizen);
+        add_photograph_btn =findViewById(R.id.add_photograph_senior_citizen_pass_btn);
         // addharcard_tv=findViewById(R.id.addharcard_tv);
-        add_Aadhar_btn =findViewById(R.id.add_addhar_btn);
-        addharcard_tv=findViewById(R.id.addharcard_tv);
-        photograph_tv=findViewById(R.id.photograph_tv);
+        add_Aadhar_btn =findViewById(R.id.add_addhar_senior_citizen_pass_btn);
+        addharcard_tv=findViewById(R.id.addharcard_senior_citizen_pass_tv);
+        photograph_tv=findViewById(R.id.photograph_senior_citizen_pass_tv);
 
-        remove_photograph_tv =findViewById(R.id.remove_photograph);
-        remove_aadhar_tv =findViewById(R.id.remove_aadhar);
+        remove_photograph_tv =findViewById(R.id.remove_photograph_senior_citizen);
+        remove_aadhar_tv =findViewById(R.id.remove_aadhar_senior_citizen);
         date_of_birth=findViewById(R.id.dob);
 
 
@@ -282,7 +282,7 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
             aadharCard.setImageBitmap(bitmap);
             add_Aadhar_btn.setVisibility(View.GONE);
             remove_aadhar_tv.setVisibility(View.VISIBLE);
-            addharcard_tv=findViewById(R.id.addharcard_tv);
+            addharcard_tv=findViewById(R.id.addharcard_senior_citizen_pass_tv);
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -329,12 +329,12 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
                     switch(view.getId())
                     {
 
-                        case R.id.add_photograph_btn:
+                        case R.id.add_photograph_senior_citizen_pass_btn:
                             flag=1;
                             String camera1="photograph";
                             chooseGalleryPhoto(camera1,buttonId);
                             break;
-                        case R.id.add_addhar_btn:
+                        case R.id.add_addhar_senior_citizen_pass_btn:
                             flag=2;
                             String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
@@ -463,13 +463,13 @@ public class SeniorCitizenActivity extends AppCompatActivity implements View.OnC
 
         switch (view.getId())
         {
-            case R.id.remove_photograph:
+            case R.id.remove_photograph_senior_citizen:
                 flag2=1;
                 photograph.setImageBitmap(null);
                 remove_photograph_tv.setVisibility(View.GONE);
                 break;
 
-            case R.id.remove_aadhar:
+            case R.id.remove_aadhar_senior_citizen:
                 flag2=2;
                 aadharCard.setImageBitmap(null);
                 remove_aadhar_tv.setVisibility(View.GONE);

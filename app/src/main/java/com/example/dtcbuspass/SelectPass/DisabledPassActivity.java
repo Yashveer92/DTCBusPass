@@ -75,20 +75,20 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_disabled_pass);
 
 
-        photograph =findViewById(R.id.photograph_img_vu);
-        aadharCard =findViewById(R.id.addharCard_img_vu);
-        certificate=findViewById(R.id.certificate_img_vu);
-        add_photograph_btn =findViewById(R.id.add_photograph_btn);
+        photograph =findViewById(R.id.photograph_img_vu_disabled_pass);
+        aadharCard =findViewById(R.id.addharCard_img_vu_disabled_pass);
+        certificate=findViewById(R.id.certificate_img_vu_disabled_pass);
+        add_photograph_btn =findViewById(R.id.add_photograph_disabled_pass_btn);
         add_certificate_btn=findViewById(R.id.add_disbled_certificate_btn);
         // addharcard_tv=findViewById(R.id.addharcard_tv);
-        add_Aadhar_btn =findViewById(R.id.add_addhar_btn);
+        add_Aadhar_btn =findViewById(R.id.add_addhar_disabled_pass_btn);
 
-        remove_photograph_tv =findViewById(R.id.remove_photograph);
-        remove_aadhar_tv =findViewById(R.id.remove_aadhar);
-        remove_certificate_tv=findViewById(R.id.remove_certificate);
+        remove_photograph_tv =findViewById(R.id.remove_photograph_disabled_pass);
+        remove_aadhar_tv =findViewById(R.id.remove_aadhar_disabled_pass);
+        remove_certificate_tv=findViewById(R.id.remove_disabled_certificate);
         date_of_birth=findViewById(R.id.dob);
-        addharcard_tv=findViewById(R.id.addharcard_tv);
-        photograph_tv=findViewById(R.id.photograph_tv);
+        addharcard_tv=findViewById(R.id.addharcard_disabled_pass_tv);
+        photograph_tv=findViewById(R.id.photograph_disabled_pass_tv);
         certficate_tv=findViewById(R.id.disablitity_certificate_tv);
 
 
@@ -293,7 +293,7 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
             aadharCard.setImageBitmap(bitmap);
             add_Aadhar_btn.setVisibility(View.GONE);
             remove_aadhar_tv.setVisibility(View.VISIBLE);
-            addharcard_tv=findViewById(R.id.addharcard_tv);
+            addharcard_tv=findViewById(R.id.addharcard_disabled_pass_tv);
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -316,7 +316,7 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
             certificate.setImageBitmap(bitmap);
             add_certificate_btn.setVisibility(View.GONE);
             remove_certificate_tv.setVisibility(View.VISIBLE);
-            certficate_tv=findViewById(R.id.addharcard_tv);
+            certficate_tv=findViewById(R.id.disablitity_certificate_tv);
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -363,12 +363,12 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
                     switch(view.getId())
                     {
 
-                        case R.id.add_photograph_btn:
+                        case R.id.add_photograph_disabled_pass_btn:
                             flag=1;
                             String camera1="photograph";
                             chooseGalleryPhoto(camera1,buttonId);
                             break;
-                        case R.id.add_addhar_btn:
+                        case R.id.add_addhar_disabled_pass_btn:
                             flag=2;
                             String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
@@ -519,19 +519,19 @@ public class DisabledPassActivity extends AppCompatActivity implements View.OnCl
 
         switch (view.getId())
         {
-            case R.id.remove_photograph:
+            case R.id.remove_photograph_disabled_pass:
                 flag2=1;
                 photograph.setImageBitmap(null);
                 remove_photograph_tv.setVisibility(View.GONE);
                 break;
 
-            case R.id.remove_aadhar:
+            case R.id.remove_aadhar_disabled_pass:
                 flag2=2;
                 aadharCard.setImageBitmap(null);
                 remove_aadhar_tv.setVisibility(View.GONE);
                 break;
 
-            case R.id.remove_certificate:
+            case R.id.remove_disabled_certificate:
                 flag2=3;
                 certificate.setImageBitmap(null);
                 remove_certificate_tv.setVisibility(View.GONE);
