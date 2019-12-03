@@ -217,46 +217,6 @@
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
-                   <!-- <LinearLayout
-
-                        android:layout_marginTop="16dp"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:paddingBottom="7dp"
-                        android:paddingTop="7dp"
-                        android:background="@drawable/login_custom_edittxt"
-                        android:layout_height="wrap_content">
-
-
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingLeft="8dp"
-                            android:src="@drawable/smartphone_asset"/>
-
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:hintEnabled="false"
-                            android:id="@+id/edt_phone">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="10 digit mobile number"
-                            android:maxLength="10"
-                            android:textSize="16sp"
-                            android:background="@null"
-                            android:paddingLeft="12dp"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@android:color/black"
-                            android:fontFamily="@font/gotham_book"
-                            android:inputType="phone"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>-->
 
                     <LinearLayout
                         android:layout_marginTop="10dp"
@@ -295,13 +255,21 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sign_up_progress"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="invisible"/>
 
 
                     <Button
                         android:id="@+id/sign_up"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+
+                        android:layout_marginTop="8dp"
+
                         android:textColor="@color/white"
                         android:background="@drawable/login_custom_btn"
                         android:text="SignUp"/>

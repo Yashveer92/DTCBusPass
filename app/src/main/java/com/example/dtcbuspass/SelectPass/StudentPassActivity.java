@@ -83,24 +83,24 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_student_pass);
 
 
-        photograph =findViewById(R.id.photograph_img_vu);
-        aadharCard =findViewById(R.id.addharCard_img_vu);
-        add_photograph_btn =findViewById(R.id.add_photograph_btn);
+        photograph =findViewById(R.id.photograph_img_vu_student_pass);
+        aadharCard =findViewById(R.id.addharCard_img_vu_student_pass);
+        add_photograph_btn =findViewById(R.id.add_photograph_student_pass_btn);
         // addharcard_tv=findViewById(R.id.addharcard_tv);
-        add_Aadhar_btn =findViewById(R.id.add_addhar_btn);
-        addharcard_tv=findViewById(R.id.addharcard_tv);
-        photograph_tv=findViewById(R.id.photograph_tv);
+        add_Aadhar_btn =findViewById(R.id.add_addhar_student_pass_btn);
+        addharcard_tv=findViewById(R.id.addharcard_student_pass_tv);
+        photograph_tv=findViewById(R.id.photograph_student_pass_tv);
         verification_letter_tv=findViewById(R.id.student_verification_tv);
-        student_id_tv=findViewById(R.id.student_id_tv);
+        student_id_tv=findViewById(R.id.student_id_student_pass_tv);
         add_verification_letter_btn=findViewById(R.id.add_student_verification_letter_btn);
-        add_student_id_btn=findViewById(R.id.add_student_id_btn);
+        add_student_id_btn=findViewById(R.id.add_student_id_student_pass_btn);
         add_verification_letter=findViewById(R.id.student_verification_img_vu);
         add_student_id=findViewById(R.id.student_id_img_vu);
         remove_verification_letter_tv=findViewById(R.id.remove_student_vrification_letter);
         remove_student_id_tv=findViewById(R.id.remove_student_id);
 
-        remove_photograph_tv =findViewById(R.id.remove_photograph);
-        remove_aadhar_tv =findViewById(R.id.remove_aadhar);
+        remove_photograph_tv =findViewById(R.id.remove_photograph_student_pass);
+        remove_aadhar_tv =findViewById(R.id.remove_aadhar_student_pass);
         date_of_birth=findViewById(R.id.dob);
 
 
@@ -123,7 +123,7 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#5a5a5a"));
                 ((TextView) parent.getChildAt(0)).setTextSize(17);
 
-               // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                // Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
 
             }
@@ -383,18 +383,18 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
                     switch(view.getId())
                     {
 
-                        case R.id.add_photograph_btn:
+                        case R.id.add_photograph_student_pass_btn:
                             flag=1;
                             String camera1="photograph";
                             chooseGalleryPhoto(camera1,buttonId);
                             break;
-                        case R.id.add_addhar_btn:
+                        case R.id.add_addhar_student_pass_btn:
                             flag=2;
                             String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
                             break;
 
-                          case R.id.add_student_id_btn:
+                        case R.id.add_student_id_student_pass_btn:
                             flag=3;
                             String camera3="studentId";
                             chooseGalleryPhoto(camera3,buttonId);
@@ -439,9 +439,9 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
 
 
 
-            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            startActivityForResult(intent, REQUEST_GALLERY_IMAGE);
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_GALLERY_IMAGE);
 
 
 
@@ -565,13 +565,13 @@ public class StudentPassActivity extends AppCompatActivity implements View.OnCli
 
         switch (view.getId())
         {
-            case R.id.remove_photograph:
+            case R.id.remove_photograph_student_pass:
                 flag2=1;
                 photograph.setImageBitmap(null);
                 remove_photograph_tv.setVisibility(View.GONE);
                 break;
 
-            case R.id.remove_aadhar:
+            case R.id.remove_aadhar_student_pass:
                 flag2=2;
                 aadharCard.setImageBitmap(null);
                 remove_aadhar_tv.setVisibility(View.GONE);

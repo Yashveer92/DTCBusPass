@@ -190,7 +190,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_photograph_btn"
+                                    android:id="@+id/add_photograph_general_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:paddingLeft="-5dp"
@@ -198,7 +198,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/photograph_tv"
+                                    android:id="@+id/photograph_general_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -211,7 +211,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_photograph"
+                                android:id="@+id/remove_photograph_general_pass"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -234,7 +234,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/photograph_img_vu"
+                                android:id="@+id/photograph_img_vu_general_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -269,7 +269,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_addhar_btn"
+                                    android:id="@+id/add_addhar_general_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:paddingLeft="-5dp"
@@ -277,7 +277,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/addharcard_tv"
+                                    android:id="@+id/addharcard_general_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -290,7 +290,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_aadhar"
+                                android:id="@+id/remove_aadhar_general_pass"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -313,7 +313,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/addharCard_img_vu"
+                                android:id="@+id/addharCard_img_vu_general_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -332,7 +332,7 @@
 
 
                     <Button
-                        android:id="@+id/proceed_to_general_pass"
+                        android:id="@+id/login_to_app"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -360,5 +360,3 @@
 
 
 </LinearLayout>
-
-

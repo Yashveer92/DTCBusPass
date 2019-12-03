@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ import retrofit2.Response;
 public class SignUpActivity extends AppCompatActivity {
 
     TextView haveAccount;
+    private ProgressBar mProgressBar;
 
 
     private static final String TAG = "RegisterActiviy";
@@ -65,6 +67,8 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
 
+        mProgressBar = findViewById(R.id.sign_up_progress);
+
         ButterKnife.bind(this);
 
         service = RetrofitBuilder.createService(ApiService.class);
@@ -76,6 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         setupRules();
 
+
         haveAccount=findViewById(R.id.btv_already_account);
         haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
 
     }
@@ -112,6 +118,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             call = service.register(name, email,password);
 
+
             call.enqueue(new Callback<AccessToken>() {
                 @Override
                 public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
@@ -121,6 +128,10 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                     if (response.code()==201) {
+
+
+                        mProgressBar.setVisibility(View.VISIBLE);
+
 
                         Toast.makeText(SignUpActivity.this, "Successfully created user", Toast.LENGTH_LONG).show();
 
@@ -144,6 +155,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<AccessToken> call, Throwable t) {
+
+      mProgressBar.setVisibility(View.GONE);
+
 
                     Log.w(TAG, "onFailure: " + t.getMessage());
 
@@ -211,6 +225,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(call != null)
             call.cancel();
         call = null;
+
 
 
     }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     TextView sighUp;
 
+
+    private ProgressBar mProgressBar;
+
+
     @BindView(R.id.edt_email_login)
 
     TextInputLayout userEmail;
@@ -65,8 +70,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sighUp=findViewById(R.id.btv_signup);
+        sighUp = findViewById(R.id.btv_signup);
 
+        mProgressBar = findViewById(R.id.login_progress);
 
         ButterKnife.bind(this);
 
@@ -81,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         sighUp.setOnClickListener(this);
 
 
-        final TextView tv_changePassword    = findViewById(R.id.forgot_password);
+        final TextView tv_changePassword = findViewById(R.id.forgot_password);
 
 
         tv_changePassword.setOnClickListener(new View.OnClickListener() {
@@ -96,11 +102,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
-        switch (view.getId())
-        {
+        switch (view.getId()) {
 
             case R.id.btv_signup:
-                Intent signup=new Intent(LoginActivity.this,SignUpActivity.class);
+                Intent signup = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(signup);
                 //finish();
                 break;
@@ -110,19 +115,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
-
     public void changePassword() {
 
         Context context = LoginActivity.this;
         final AlertDialog alertDialog;
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        final View v = inflater.inflate(R.layout.dialog_change_password,null);
+        final View v = inflater.inflate(R.layout.dialog_change_password, null);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            alertDialog = new AlertDialog.Builder(context,android.
+            alertDialog = new AlertDialog.Builder(context, android.
                     R.style.Theme_DeviceDefault_Light_Dialog_MinWidth).create();
         } else {
             alertDialog = new AlertDialog.Builder(context).create();
@@ -132,34 +135,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         alertDialog.setView(v);
 
-        final EditText et_current_pass,et_new_pass, et_confirm_pass;
+        final EditText et_current_pass, et_new_pass, et_confirm_pass;
         final TextView password_error;
-        TextView done,cancel;
+        TextView done, cancel;
 
 
         et_current_pass = v.findViewById(R.id.current_password);
-        et_new_pass     = v.findViewById(R.id.new_password);
+        et_new_pass = v.findViewById(R.id.new_password);
         et_confirm_pass = v.findViewById(R.id.confirm_password);
 
 
         password_error = v.findViewById(R.id.tv_password_error);
 
-        done   = v.findViewById(R.id.done);
+        done = v.findViewById(R.id.done);
         cancel = v.findViewById(R.id.cancel);
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String currentPass,newPass,confirmPass;
+                String currentPass, newPass, confirmPass;
 
                 currentPass = et_current_pass.getText().toString().trim();
-                newPass     = et_new_pass.getText().toString().trim();
+                newPass = et_new_pass.getText().toString().trim();
                 confirmPass = et_confirm_pass.getText().toString().trim();
 
 
-                if(currentPass.equals("") || newPass.equals("") ||
-                        confirmPass.equals("")){
+                if (currentPass.equals("") || newPass.equals("") ||
+                        confirmPass.equals("")) {
                     password_error.setVisibility(View.VISIBLE);
                     password_error.setText("All field are required");
                     return;
@@ -176,14 +179,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }*/
 
                 //if new password is shorter than six character
-                if(newPass.length()<6){
+                if (newPass.length() < 6) {
                     password_error.setVisibility(View.VISIBLE);
                     password_error.setText("*New password must be of at least six characters");
                     et_confirm_pass.setText("");
                     return;
                 }
 
-                if(!newPass.equals(confirmPass)){
+                if (!newPass.equals(confirmPass)) {
                     password_error.setVisibility(View.VISIBLE);
                     password_error.setText("*New password and confirm password do not match");
                     et_confirm_pass.setText("");
@@ -216,6 +219,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
+
+
+
+
     @OnClick(R.id.login_to_app)
 
     void login() {
@@ -232,14 +239,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (validator.validate()) {
 
             call = service.login(email, password);
+
             call.enqueue(new Callback<AccessToken>() {
                 @Override
+
+
+
                 public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
 
 
 
 
                     if (response.isSuccessful()) {
+
+
+                        mProgressBar.setVisibility(View.VISIBLE);
+
+
 
                         tokenManager.saveToken(response.body());
 
@@ -269,6 +285,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onFailure(Call<AccessToken> call, Throwable t) {
 
+
+                    mProgressBar.setVisibility(View.GONE);
+
+
                 }
             });
 
@@ -296,6 +316,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if(error.getKey().equals("password"))
             {
                 userPass.setError(error.getValue().get(0));
+
             }
 
 
@@ -327,4 +348,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
 }
+
+
+

@@ -189,7 +189,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_photograph_btn"
+                                    android:id="@+id/add_photograph_disabled_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:paddingLeft="-5dp"
@@ -197,7 +197,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/photograph_tv"
+                                    android:id="@+id/photograph_disabled_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -210,7 +210,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_photograph"
+                                android:id="@+id/remove_photograph_disabled_pass"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -233,7 +233,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/photograph_img_vu"
+                                android:id="@+id/photograph_img_vu_disabled_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -268,7 +268,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_addhar_btn"
+                                    android:id="@+id/add_addhar_disabled_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:paddingLeft="-5dp"
@@ -276,7 +276,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/addharcard_tv"
+                                    android:id="@+id/addharcard_disabled_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -289,7 +289,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_aadhar"
+                                android:id="@+id/remove_aadhar_disabled_pass"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -312,7 +312,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/addharCard_img_vu"
+                                android:id="@+id/addharCard_img_vu_disabled_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -347,8 +347,8 @@
                                     android:id="@+id/add_disbled_certificate_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
-                                    android:paddingLeft="-5dp"
                                     android:onClick="onAddReportButton"
+                                    android:paddingLeft="-5dp"
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
@@ -365,7 +365,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_certificate"
+                                android:id="@+id/remove_disabled_certificate"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -388,7 +388,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/certificate_img_vu"
+                                android:id="@+id/certificate_img_vu_disabled_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -408,7 +408,7 @@
 
 
                     <Button
-                        android:id="@+id/proceed_to_disabled_pass"
+                        android:id="@+id/login_to_app"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -436,5 +436,4 @@
 
 
 </LinearLayout>
-
 

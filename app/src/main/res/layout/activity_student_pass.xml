@@ -182,7 +182,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_photograph_btn"
+                                    android:id="@+id/add_photograph_student_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:onClick="onAddReportButton"
@@ -190,7 +190,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/photograph_tv"
+                                    android:id="@+id/photograph_student_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -203,7 +203,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_photograph"
+                                android:id="@+id/remove_photograph_student_pass"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -226,7 +226,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/photograph_img_vu"
+                                android:id="@+id/photograph_img_vu_student_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -259,7 +259,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_addhar_btn"
+                                    android:id="@+id/add_addhar_student_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:onClick="onAddReportButton"
@@ -267,7 +267,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/addharcard_tv"
+                                    android:id="@+id/addharcard_student_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -280,7 +280,7 @@
 
 
                             <TextView
-                                android:id="@+id/remove_aadhar"
+                                android:id="@+id/remove_aadhar_student_pass"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -303,7 +303,7 @@
                             android:background="@drawable/frame_rect_02">
 
                             <ImageView
-                                android:id="@+id/addharCard_img_vu"
+                                android:id="@+id/addharCard_img_vu_student_pass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
@@ -341,7 +341,7 @@
 
 
                                 <ImageView
-                                    android:id="@+id/add_student_id_btn"
+                                    android:id="@+id/add_student_id_student_pass_btn"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:onClick="onAddReportButton"
@@ -349,7 +349,7 @@
                                     android:src="@drawable/add_doc_photo_btn" />
 
                                 <TextView
-                                    android:id="@+id/student_id_tv"
+                                    android:id="@+id/student_id_student_pass_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
@@ -481,7 +481,7 @@
 
 
                     <Button
-                        android:id="@+id/procced_to_student_pass"
+                        android:id="@+id/login_to_app"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
@@ -507,5 +507,3 @@
 
 
 </LinearLayout>
-
-
