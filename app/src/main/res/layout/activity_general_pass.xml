@@ -9,7 +9,7 @@
     tools:context=".SelectPass.GeneralPassActivity">
 
 
-    <include layout="@layout/buy_bus_pass_toolbar" />
+    <include layout="@layout/general_pass_toolbar" />
 
 
     <View
@@ -44,12 +44,13 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/first_name_general_pass"
+
                         android:layout_marginTop="10dp"
                         android:textColorHint="@color/darkgray"
                         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/first_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -72,12 +73,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:id="@+id/last_name_general_pass"
 
                         android:textColorHint="@color/darkgray"
                         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/last_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -101,18 +102,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:id="@+id/phone_id_general"
 
                         android:textColorHint="@color/darkgray"
                         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/email_id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:fontFamily="@font/gotham_book"
-                            android:hint="Email Id"
-                            android:inputType="textEmailAddress"
+                            android:hint="mobile"
+                            android:maxLength="10"
+                            android:inputType="phone"
                             android:paddingTop="12dp"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
@@ -132,7 +134,7 @@
 
 
                     <TextView
-                        android:id="@+id/dob"
+                        android:id="@+id/dob_general_pass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham_book"
@@ -154,7 +156,7 @@
 
 
                     <Spinner
-                        android:id="@+id/choose_gender"
+                        android:id="@+id/choose_gender_general_pass"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="-7dp"
@@ -330,12 +332,19 @@
                         android:layout_height="1dp"
                         android:background="@color/background4" />
 
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar_proceed_general_pass"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="invisible"/>
+
 
                     <Button
-                        android:id="@+id/login_to_app"
+                        android:id="@+id/proceed_general_pass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:textColor="@color/white"
                         android:layout_marginLeft="25dp"

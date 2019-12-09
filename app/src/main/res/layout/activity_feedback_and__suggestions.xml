@@ -36,12 +36,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/feedback_name"
                 android:layout_marginTop="10dp"
                 android:textColorHint="@color/darkgray"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -66,13 +66,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/feedback_email"
             android:layout_marginTop="10dp"
-
             android:textColorHint="@color/darkgray"
             app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/last_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -92,8 +91,28 @@
             android:background="@color/background4" />
 
 
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false"
+                android:id="@+id/feeedback_description">
+<!--
             <EditText
-                android:id="@+id/des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/gotham_book"
+                android:hint="Name"
+                android:inputType="text"
+                android:drawableLeft="@drawable/person_asset"
+                android:paddingLeft="5dp"
+                android:drawablePadding="10dp"                                android:textColor="@android:color/black"
+                android:textSize="16sp" />-->
+
+
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginTop="8dp"
@@ -106,18 +125,29 @@
                 android:paddingBottom="24dp"
                 android:textSize="14sp" />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/feedback_progressBar"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"/>
 
             <Button
-                android:id="@+id/submit_feed_back"
+                android:id="@+id/submit_feedback"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="25dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/login_custom_btn"
                 android:text="Submit"
-                android:textColor="@color/white" />
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/montserrat_medium"
+                android:textSize="12sp"
+                android:textColor="@color/white" /> />
 
 
 

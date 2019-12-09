@@ -62,6 +62,7 @@
                 android:inputType="phone"/>
         </LinearLayout>
 
+
             <Button
                 android:id="@+id/track_now_btn"
                 android:layout_width="match_parent"
@@ -70,8 +71,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/login_custom_btn"
                 android:text="Track Now"
+                android:background="@color/colorPrimary"
                 android:fontFamily="@font/montserrat_medium"
                 android:textSize="12sp"
                 android:textColor="@color/white" />

@@ -19,6 +19,7 @@ import com.example.dtcbuspass.SelectPass.DisabledPassActivity;
 import com.example.dtcbuspass.SelectPass.GeneralPassActivity;
 import com.example.dtcbuspass.SelectPass.SeniorCitizenActivity;
 import com.example.dtcbuspass.SelectPass.StudentPassActivity;
+import com.example.dtcbuspass.network.entities.AccessToken;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -31,6 +32,8 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
     RadioGroup radioGroup;
     private TextView mDisplayDate,changeDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,12 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
        TextView tvSelectPassDuration=findViewById(R.id.selct_pass_duration);
 
 
+
         tvSelectPassDuration.setText(list[position]);
+
+       String  passValidity = list[position];
+
+
 
 
     }
@@ -146,14 +154,20 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
                 if (checkedId==R.id.general_radio_btn)
                 {
 
+
+
                     startActivity(new Intent(BuyBusPassActivity.this, GeneralPassActivity.class));
+
 
 
                 }
 
                 else if(checkedId==R.id.student_radio_btn)
                 {
+
+
                     startActivity(new Intent(BuyBusPassActivity.this, StudentPassActivity.class));
+
 
 
                 }
@@ -162,11 +176,13 @@ public class BuyBusPassActivity extends AppCompatActivity  implements PassDurati
                     startActivity(new Intent(BuyBusPassActivity.this, DisabledPassActivity.class));
 
 
+
                 }
 
                 else if(checkedId==R.id.senr_citizen_radio_btn)
                 {
                     startActivity(new Intent(BuyBusPassActivity.this, SeniorCitizenActivity.class));
+
 
 
                 }

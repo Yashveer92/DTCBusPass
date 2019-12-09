@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,12 +32,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.dtcbuspass.LoginSignUp.LoginActivity;
+import com.example.dtcbuspass.LoginSignUp.SignUpActivity;
 import com.example.dtcbuspass.R;
+import com.example.dtcbuspass.SuccesfulSubmittedActivity;
+import com.example.dtcbuspass.network.ApiService;
+import com.example.dtcbuspass.network.FileUtils;
+import com.example.dtcbuspass.network.RetrofitBuilder;
+import com.example.dtcbuspass.network.Utils;
+import com.example.dtcbuspass.network.entities.AccessToken;
+import com.example.dtcbuspass.network.entities.ApiError;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -51,16 +65,39 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.example.dtcbuspass.network.FileUtils.getFile;
+
 public class GeneralPassActivity extends AppCompatActivity implements  View.OnClickListener {
 
 
+    private ProgressBar mProgressBar;
+
     File mPhotoFile;
-    private Button btn;
+    private Button btn,proceed;
+
+    ImageView back_arrow;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     public static final int REQUEST_GALLERY_IMAGE = 5;
     TextView date_of_birth;
+
+    String dob,genderSelected;
+
     Bitmap bitmap;
     private String  buttonId;
     TextView remove_photograph_tv, remove_aadhar_tv,photograph_tv,addharcard_tv;
@@ -69,10 +106,35 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
 
     private Uri photoURI = null;
 
+    private  Uri photo,adhar;
+
 
     int flag,flag2;
     String[] gender = { "Select Gender","Male", "Female"};
     Spinner spin;
+
+    @BindView(R.id.first_name_general_pass)
+    TextInputLayout firstName;
+
+    @BindView(R.id.last_name_general_pass)
+    TextInputLayout lastName;
+
+    @BindView(R.id.phone_id_general)
+    TextInputLayout userPhone;
+
+/*
+
+    @BindView(R.id.photograph_img_vu_general_pass)
+     ImageView userPhotograph;
+
+    @BindView(R.id.addharCard_img_vu_general_pass)
+     ImageView userAdhar;
+*/
+
+
+    ApiService service;
+
+    Call<AccessToken> call;
 
 
 
@@ -81,6 +143,14 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_pass);
 
+        ButterKnife.bind(this);
+
+        mProgressBar = findViewById(R.id.progressBar_proceed_general_pass);
+
+
+        service = RetrofitBuilder.createService(ApiService.class);
+
+        proceed = findViewById(R.id.proceed_general_pass);
 
         photograph =findViewById(R.id.photograph_img_vu_general_pass);
         aadharCard =findViewById(R.id.addharCard_img_vu_general_pass);
@@ -92,12 +162,24 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
 
         remove_photograph_tv =findViewById(R.id.remove_photograph_general_pass);
         remove_aadhar_tv =findViewById(R.id.remove_aadhar_general_pass);
-        date_of_birth=findViewById(R.id.dob);
+        date_of_birth=findViewById(R.id.dob_general_pass);
 
 
-        spin =  findViewById(R.id.choose_gender);
+        spin =  findViewById(R.id.choose_gender_general_pass);
         remove_aadhar_tv.setOnClickListener(this);
         remove_photograph_tv.setOnClickListener(this);
+        back_arrow=findViewById(R.id.general_pass_back_btn);
+
+        proceed.setOnClickListener(this);
+
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+            }
+        });
+
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,gender);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -107,7 +189,7 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
 
-                String item = parent.getItemAtPosition(position).toString();
+                genderSelected = parent.getItemAtPosition(position).toString();
 
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#5a5a5a"));
                 ((TextView) parent.getChildAt(0)).setTextSize(17);
@@ -151,8 +233,8 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
                 month = month + 1;
                 //Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                String date = day + "/" + month + "/" + year;
-                date_of_birth.setText(date);
+                 dob = year + "/" + month + "/" + day;
+                date_of_birth.setText(dob);
             }
         };
     }
@@ -232,6 +314,7 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
 
                 Uri selectedImage = data.getData();
 
+
                 String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
@@ -272,8 +355,14 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
         if(flag==1)
         {
             photograph.setImageBitmap(bitmap);
+
+
             add_photograph_btn.setVisibility(View.GONE);
             remove_photograph_tv.setVisibility(View.VISIBLE);
+
+             photo = getImageUri(this, bitmap);
+
+
 
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -294,6 +383,9 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
             aadharCard.setImageBitmap(bitmap);
             add_Aadhar_btn.setVisibility(View.GONE);
             remove_aadhar_tv.setVisibility(View.VISIBLE);
+
+            adhar = getImageUri(this, bitmap);
+
 
 
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -319,6 +411,17 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
 
     }
 
+    // convert bitmap into uri
+
+    private Uri getImageUri(Context inContext, Bitmap bitmap) {
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), bitmap, "photograph", null);
+        return Uri.parse(path);
+
+
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -351,6 +454,11 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
                             String camera2="aadharCard";
                             chooseGalleryPhoto(camera2,buttonId);
                             break;
+
+
+
+
+
                     }
 
 
@@ -487,11 +595,166 @@ public class GeneralPassActivity extends AppCompatActivity implements  View.OnCl
                 remove_aadhar_tv.setVisibility(View.GONE);
                 break;
 
+            case R.id.proceed_general_pass:
+                RegGeneralPass(photo, adhar);
+                break;
+
+
+
 
 
         }
 
         reDefinedWidthHeight();
+    }
+
+
+   // @OnClick(R.id.proceed_general_pass)
+
+    void RegGeneralPass(Uri photo, Uri adhar)
+    {
+
+
+
+        String Fname = firstName.getEditText().getText().toString();
+        String Lname = lastName.getEditText().getText().toString();
+         String mobile = userPhone.getEditText().getText().toString();
+       // String email = userEmail.getEditText().getText().toString();
+
+
+
+        RequestBody first_name = RequestBody.create(MultipartBody.FORM, Fname);
+
+        RequestBody last_name = RequestBody.create(MultipartBody.FORM, Lname);
+        service = RetrofitBuilder.createService(ApiService.class);
+
+        RequestBody phone = RequestBody.create(MultipartBody.FORM, mobile);
+
+        RequestBody date_of_birth = RequestBody.create(MultipartBody.FORM, dob);
+
+
+        RequestBody gender = RequestBody.create(MultipartBody.FORM, genderSelected);
+
+
+
+
+
+
+
+        File orginalFile1 = FileUtils.getFile(this, photo);
+        File orginalFile2 = FileUtils.getFile(this, adhar);
+
+
+        RequestBody photograph = RequestBody.create(
+
+                MediaType.parse(getContentResolver().getType(photo)),
+                orginalFile1);
+
+        RequestBody adharCard = RequestBody.create(
+
+                MediaType.parse(getContentResolver().getType(adhar)),
+                orginalFile2);
+
+
+        MultipartBody.Part file1 = MultipartBody.Part.createFormData("photograph", orginalFile1.getName(), photograph);
+
+        MultipartBody.Part file2 = MultipartBody.Part.createFormData("adhar_card", orginalFile2.getName(), adharCard);
+
+
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl("http://192.168.43.27/PassApi/public/api/")
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        ApiService client = retrofit.create(ApiService.class);
+
+        Call<ResponseBody> call = client.RegGeneralPass( first_name,last_name,phone, date_of_birth ,gender,file1,file2);
+
+        mProgressBar.setVisibility(View.VISIBLE);
+
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+
+                if (response.code()==201) {
+
+
+                    startActivity(new Intent(GeneralPassActivity.this, SuccesfulSubmittedActivity.class));
+
+                    finish();
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                mProgressBar.setVisibility(View.GONE);
+
+
+            }
+        });
+
 
     }
-}
+
+
+
+/*
+    private void handleErrors(ResponseBody response)
+    {
+
+
+        ApiError apiError = Utils.convertErrors(response);
+
+        for(Map.Entry<String, List<String>> error : apiError.getError().entrySet())
+        {
+
+            if(error.getKey().equals("name"))
+            {
+                usrName.setError(error.getValue().get(0));
+            }
+            if(error.getKey().equals("email"))
+            {
+                userEmail.setError(error.getValue().get(0));
+            }
+
+        *//*    if(error.getKey().equals("phone"))
+            {
+                userPhone.setError(error.getValue().get(0));
+            }*//*
+            if(error.getKey().equals("password"))
+            {
+                usrPass.setError(error.getValue().get(0));
+            }
+
+
+        }
+
+    }*/
+
+
+
+    protected void onDestroy()
+    {
+        super.onDestroy();
+
+        if(call != null)
+            call.cancel();
+        call = null;
+
+
+
+    }
+
+
+
+
+    }
+

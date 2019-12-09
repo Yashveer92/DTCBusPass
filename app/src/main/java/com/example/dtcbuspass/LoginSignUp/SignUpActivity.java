@@ -118,6 +118,9 @@ public class SignUpActivity extends AppCompatActivity {
 
             call = service.register(name, email,password);
 
+            mProgressBar.setVisibility(View.VISIBLE);
+
+
 
             call.enqueue(new Callback<AccessToken>() {
                 @Override
@@ -130,7 +133,6 @@ public class SignUpActivity extends AppCompatActivity {
                     if (response.code()==201) {
 
 
-                        mProgressBar.setVisibility(View.VISIBLE);
 
 
                         Toast.makeText(SignUpActivity.this, "Successfully created user", Toast.LENGTH_LONG).show();

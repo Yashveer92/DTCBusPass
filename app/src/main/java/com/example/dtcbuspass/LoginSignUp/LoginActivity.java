@@ -240,6 +240,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             call = service.login(email, password);
 
+
+
             call.enqueue(new Callback<AccessToken>() {
                 @Override
 
@@ -252,8 +254,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     if (response.isSuccessful()) {
 
-
                         mProgressBar.setVisibility(View.VISIBLE);
+
+
 
 
 
